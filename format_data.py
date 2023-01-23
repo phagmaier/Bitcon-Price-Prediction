@@ -1827,51 +1827,21 @@ data = """
 
 import pandas as pd
 import numpy as np
-#b = data.count('\n')
-#print(b)
 
 
-#f = 'hello'
-#print(f.count('h'))
-#print(data)
 
-#x = data.split('\t')
 
 rows = data.split("\n")
 
-#use a list comprehension to create a list of lists, where each inner list represents a row
+
 result = [[item for item in row.split("\t")] for row in rows]
-#print(result[1])
+
 
 result = result[1:]
-#print(result[:0])
-#print(result[0])
 
-#notes on data
-#volume is actually 'real volume'
-#marketcap is actually circulating marketcap
-#new_data = {"date": [], "price": [], "volume": [],"market_cap": []}
-#print(result[:,1])
-"""
-data_df = pd.DataFrame({"date": [row[0] for row in result], 
-	"price": [row[1] for row in result],
-	"volume":[row[2] for row in result], 
-	"market_cap": [row[3] for row in result], 
-	"circ_supply": [row[4] for row in result], 
-	"active_supply": [row[5] for row in result], 
-	"big_act_add": [row[6] for row in result], 
-	"deposits":[row[7] for row in result],
-	"withdrawls":[row[8] for row in result],
-	"TPS":[row[9] for row in result]})
-"""
 
-"""
-for row in result:
-	print("NEW ROW")
-	for i in range(len(row)):
 
-		print(row[i])
-"""
+
 
 info_dic = {
 "date": [],
@@ -1897,14 +1867,11 @@ for row in result:
 	for i in range(len(row)):
 		info_dic[aMap[i]].append(row[i])
 
-#print(info_dic['date'])
-#print(info_dic['TPS'])
 
-#my_df = pd.DataFrame.from_dict(info_dic)
 
 keys = info_dic.keys()
 
-#print(info_dic['date'])
+
 
 
 old = info_dic['date']
@@ -1913,26 +1880,10 @@ new = old[:-1]
 
 info_dic['date'] = new
 
-#my_df = pd.DataFrame.from_dict(info_dic)
-
-
-'''
-TO DO:
-conver everything to a float
-Conver to DataFrame
-Convert to spreadsheet
-Once in spreadsheet load all data except for the date
-Also add in the dow shit replace date with that
-'''
-
-
 l = info_dic['act_supply'][0]
 print(l)
 
 print(l[:-3])
-
-#x = x[:-4]
-#x = x.replace(',', "")
 
 def rm_BTC(string):
 	string = string[:-4]
@@ -2009,47 +1960,6 @@ stock_keys =stock_keys[1:]
 
 converted_keys = [datetime.strptime(i, "%m/%d/%Y") for i in stock_keys]
 
-"""
-def fill_dates(keys,dic):
-	dates = dic
-	last_date = keys[0]
-	last_value = dic[keys[0]]
-	for i in range(1,len(keys)):
-		#if (date2 - date1).days == 1:
-		#convert back to string: 
-		#date_object = datetime(2022, 1, 1)
-		#date_string = date_object.strftime("%m/%d/%Y")
-		if (datetime.strptime(last_date, "%m/%d/%Y") - datetime.strptime(keys[i], "%m/%d/%Y")).days != 1:
-			new_date = datetime.strptime(last_date, "%m/%d/%Y") - datetime.strptime(keys[i], "%m/%d/%Y")
-			print(new_date)
-			date_string = new_date.strftime("%m/%d/%Y")
-			dates[date_string] = last_value
-		else:
-
-			last_value = dic[keys[i]]
-			last_date = keys[i]
-	return dates  
-"""
-"""
-def fill_dates(keys,dic):
-    dates = dic
-    last_date = keys[0]
-    last_value = dic[keys[0]]
-    for i in range(1,len(keys)):
-        last_date_obj = datetime.strptime(last_date, "%m/%d/%Y")
-        current_date_obj = datetime.strptime(keys[i], "%m/%d/%Y")
-        diff = current_date_obj - last_date_obj
-        if diff.days != 1:
-            for j in range(1, diff.days):
-                new_date = last_date_obj + timedelta(days=j)
-                date_string = new_date.strftime("%m/%d/%Y")
-                dates[date_string] = last_value
-        last_value = dic[keys[i]]
-        last_date = keys[i]
-    return dates
-"""
-
-
 
 #DICT WITH ALL DATES INCLUDING WEEKENDS 
 #filled_dates = fill_dates(stock_keys, stock_data)
@@ -2060,20 +1970,6 @@ def fill_dates(keys,dic):
 #THEN YOU COMBINE THEM IN THE SINGLE DICT JUST ADD A 
 #NEW KEY FOR STOCKS AND THEN ADD THE LIST
 #CONVERT TO TO DATA FRAME THEN CONVERT IT TO CSV
-
-#ALONG WITH PURE PRICE MAYBE ALSO INCLUDE THE DIFFERENCE IN THE PRICE FROM
-#THE TWO PREVIOUS DAYS
-
-#nasdaq = [float(stock_data[i]) for i in stock_keys]
-#print(len(nasdaq))
-
-#need to fill in the weekend prices meaning 
-#if there is not date listed then you need to get the last day
-
-#df = pd.read_csv('example.csv', delimiter=';')
-
-#my_df = pd.DataFrame.from_dict(real_dic)
-#my_df.to_excel('BitcoinData.xlsx', sheet_name='Sheet1')
 
 
 
@@ -2090,19 +1986,16 @@ def get_diff(l):
 	diff.append(0)
 	return diff
 
-#stock_diff = get_diffs
-
-#print(stock_data)
 
 #STOCK PRICES
 stock_prices = [float(stock_data[i]) for i in stock_keys]
-#print(stock_prices)
+
 
 stock_diff = get_diff(stock_prices)
 
 crypy_diff = get_diff(real_dic['price'])
 
-#they line up with is good 
+
 print(len(crypy_diff))
 print(len(real_dic['price']))
 
@@ -2112,43 +2005,11 @@ real_dic['crypy_diff'] = crypy_diff
 
 real_dic_keys = real_dic.keys()
 
-#THE ONLY THING THAT DOESN'T HAVE THE SAME LENGTH IS THE 
-#STOCK PRICE DIFFERENCE
-#YOU ALSO DON'T HAVE STOCK PRICE IN HERE SO NEED TO ADD THAT AS WELL
-
-
-#for i in real_dic.keys():
-	#print(f"length of {i} : {len(real_dic[i])}")
-
 
 #OKAY SO WE NEED A NEW FUNC TO GET ALL THE DATES FROM START TO END
 #AND THEN WE WILL FILL IN THE MISSING DATA
 
-#HERE IS HOW CHAT GPT SAYS TO DO IT:
-'''
-from datetime import timedelta, datetime
 
-def get_date_range(start_date, end_date):
-    start_date = datetime.strptime(start_date, '%m/%d/%Y')
-    end_date = datetime.strptime(end_date, '%m/%d/%Y')
-    current_date = start_date
-    dates = []
-    while current_date <= end_date:
-        date_string = current_date.strftime("%m/%d/%Y")
-        dates.append(date_string)
-        current_date += timedelta(days=1)
-    return dates
-#THIS IS HOW YOU WOULD CALL IT
-start_date = "01/01/2022"
-end_date = "01/03/2022"
-date_range = get_date_range(start_date, end_date)
-print(date_range)
-'''
-
-#FIND YOUR START DATE AND END DATE FROM THE SPREADSHEET
-#ENTER IT AS INSTRUCTED AND THEN WHEN YOU ADD THIS TO TH DIC
-#YOU CAN SET THE EMPTY VALUES TO i-1 where i will be all the keys 
-#and you increment them
 from datetime import datetime, timedelta
 def get_date_range(start_date, end_date):
     start_date = datetime.strptime(start_date, '%m/%d/%Y')
@@ -2187,7 +2048,7 @@ stock_data['01/14/2023'] = '11079.16'
 
 new_stock_keys = new_stock_keys[:-2]
 
-#print(date_range)
+
 
 ###FILL IN MISSING DATA
 
@@ -2204,10 +2065,7 @@ def complete_data(d_range, keys,dic):
 	return complete
 
 complete = complete_data(date_range,new_stock_keys, stock_data)
-#print('\n\n\n')
-#print(complete)
 
-#complete_keys = complete.keys()
 
 complete_keys = complete.keys()
 
@@ -2216,7 +2074,7 @@ print()
 print()
 print(len(complete_stock_data))
 
-#NEED TO ADD TO DICT AND GET THE DIFFERENCE
+
 
 stock_dif = get_diff(complete_stock_data)
 #print(len(stock_dif))
