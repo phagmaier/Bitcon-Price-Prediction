@@ -10,6 +10,7 @@ could be in predicting price change. The model was suprisingly sucessful. The mo
 2. data.csv: contains our cleaned data that we will use as features and labels
 3. helper_functions: contains heper function to convert labels into percentage change
 4. main: load data into our model as well as train and test data. We also plot results and correlation of our data
+5. model_dict.pt: a saved state o our model's params. If you would like to jst import the model and skip training by just loading the .pt file you can do this as well to save time
 
 ## Libraries:
 matplotlib
