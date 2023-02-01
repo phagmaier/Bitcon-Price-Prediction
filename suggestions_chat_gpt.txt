@@ -1,0 +1,11 @@
+You can add more non-linearity to your model by modifying the activation functions or adding more hidden layers. Here are a few suggestions:
+
+Change the activation function: You are currently using the ReLU activation function. You can try using other non-linear activation functions like the sigmoid, tanh, or the leaky ReLU to add more non-linearity to your model.
+
+Add more hidden layers: You currently have 4 linear layers, but adding more hidden layers can increase the model's capacity to learn more complex relationships. You can try adding 1 or 2 more hidden layers with non-linear activation functions, such as ReLU or tanh.
+
+Fine-tune the layer sizes: You can also try changing the number of neurons in each layer to see if it affects the performance of the model. You can start with larger layer sizes and gradually reduce them if the model is overfitting.
+
+Regularization: You can also add regularization techniques, such as dropout or L1/L2 regularization, to prevent overfitting and reduce the complexity of the model.
+
+It's important to experiment with different configurations to find the best architecture for your problem, as there is no one-size-fits-all solution.
