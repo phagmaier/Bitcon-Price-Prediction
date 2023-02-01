@@ -8,7 +8,7 @@ could be in predicting price change. The model was suprisingly sucessful. The mo
 
 ## INCOMPLETE
 LSTM model is still not working. Hoping to add to this and get it working in an attempt to make more accurate predictions with 
-a more sophisticated and accurate model
+a more sophisticated and accurate model. As it stands it's just a basic template to build off of need to impliment a LSTM cell.
 
 
 ## Libraries:
