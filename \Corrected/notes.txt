@@ -1,0 +1,17 @@
+You should eliminate one of the features that perfectly correlate and consider reducing the number
+of features after that to see if that improves it. Note that you should try feature elimination
+after removing the one of the pairs of features that perfectly correlate
+
+Once you do this for the linear model then you can move on to LSTM 
+
+You should also eliminate cryp diff and stock diff there correlation is abysmal
+
+
+YOU MAY ALSO BE BETTER OFF PREDICTING PRICE and then calculating the change since more features seem to fall in line with this 
+
+You may also want to do less shit with data just give it the price the volume the cap etc...
+and just work like that to predict the next days price
+
+Should probably just generate classes of: BUY, SELL, DO NOTHING
+if increases is above 3% buy if bellow 3% sell and if in between do nothing
+Can also add more shit like if it's 5 or above do definitely buy and -5 then definitely sell

@@ -96,3 +96,4 @@ class StockPred(nn.Module):
         x = self.layer_6(x)
         return x
 """
+
