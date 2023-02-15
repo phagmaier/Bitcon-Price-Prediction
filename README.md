@@ -1,5 +1,8 @@
 # Bitcon-Price-Prediction
 
+## Note
+Corrected version is in the folder under the name corrected
+
 ## GOAL
 Predict the percentage change of Bitcoin one day into the future using the data collected from Messari
 The gol of this project was to find, collect, clean and import data and find how accurate a simple feedforward linear neural network
